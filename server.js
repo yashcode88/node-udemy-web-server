@@ -3,6 +3,8 @@ const hbs = require("hbs");
 
 const app = express();
 
+const port = process.env.PORT||3000;
+
 hbs.registerPartials(__dirname + "/views/partials");
 app.set("view engine", "hbs");
 app.use(express.static(__dirname + "/public"));
@@ -10,15 +12,15 @@ app.use(express.static(__dirname + "/public"));
 app.use((req, res, next) => {
     console.log(new Date().toDateString() + " : request for " + req.url);
     next();
-})
+});
 
 app.use((req, res, next) => {
-    res.render("maintainance.hbs", {
-        pageTitle: "Home page",
-        currentYear: new Date(),
-        welcomeMessage: "Welcome my first node.js website."
-    });
-    // next();
+    // res.render("maintainance.hbs", {
+    //     pageTitle: "Home page",
+    //     currentYear: new Date(),
+    //     welcomeMessage: "Welcome my first node.js website."
+    // });
+    // // next();
 })
 
 app.get("/", (req, res) => {
@@ -43,6 +45,6 @@ app.get("/about", (req, res) => {
 });
 
 
-app.listen(3000, () => {
-    console.log("Server started on port 3000...")
+app.listen(port, () => {
+    console.log(`Server started on port ${port}...`)
 });
