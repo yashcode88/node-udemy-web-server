@@ -35,6 +35,16 @@ app.get("/", (req, res) => {
         welcomeMessage: "Welcome my first node.js website."
     });
 });
+app.get("/home", (req, res) => {
+    var data = { "name": "abc" };
+    // var data = "hello."
+    // res.send(data);
+    res.render("home.hbs", {
+        pageTitle: "Home page",
+        currentYear: new Date(),
+        welcomeMessage: "Welcome my first node.js website."
+    });
+});
 
 app.get("/about", (req, res) => {
     // var data = {"name":"abc"};
