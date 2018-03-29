@@ -14,13 +14,15 @@ app.use((req, res, next) => {
     next();
 });
 
+
+
 app.use((req, res, next) => {
     // res.render("maintainance.hbs", {
     //     pageTitle: "Home page",
     //     currentYear: new Date(),
     //     welcomeMessage: "Welcome my first node.js website."
     // });
-    // // next();
+    next();
 })
 
 app.get("/", (req, res) => {
@@ -40,6 +42,16 @@ app.get("/about", (req, res) => {
     // res.send("About page.");
     res.render("about.hbs", {
         pageTitle: "About page",
+        currentYear: new Date().toString()
+    });
+});
+
+app.get("/projects", (req, res) => {
+    // var data = {"name":"abc"};
+    // va   r data = "hello."
+    // res.send("About page.");
+    res.render("projects.hbs", {
+        pageTitle: "Projects page",
         currentYear: new Date().toString()
     });
 });
